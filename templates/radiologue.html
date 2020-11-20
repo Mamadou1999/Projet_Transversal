@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+  {% for de in demande %}
+    <article>
+      <p>
+          <span style="font-weight: bold;">CodeCCAM:</span> {{ de.codeccam }}<br>
+          <span style="font-weight: bold;">Modalité:</span> {{ de.modalité }}<br>
+          <span style="font-weight: bold;">Examen effectué:</span> {{ de.exameffectue }}<br>
+          <span style="font-weight: bold;">Numéro ordre:</span> {{ de.numorde }}<br>
+          <span style="font-weight: bold;">Observation Clinique:</span> {{ de.observationclinique }}<br>
+          <span style="font-weight: bold;">Question CLinique:</span> {{ de.questionclinicien }}<br>
+          <span style="font-weight: bold;">Observation Technique:</span> {{ de.observationtech }}<br>
+          <span style="font-weight: bold;">Url image:</span> {{ de.image }}<br>
+          <span style="font-weight: bold;">Medecin:</span> {{ de.medecin}}
+      </p>
+    </article>
+
+  {% endfor %}
+
+  <title>Path: {{ tree.name }}</title>
+  <h1>{{ tree.name }}</h1>
+  <ul>
+  {%for item in tree.children recursive %}
+      <li>{{ item.name }}
+      {% if item.children %}
+          <ul>static://{{ loop(item.children) }}</ul>
+      {% endif %}</li>
+      <a href="{{ url_for('download')}}">download</a>
+  {% endfor %}
+  </ul>
+
+
+
+  <h1>Rapport</h1>
+  <form action="/radiologue" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <label>Fichier</label>
+      <input type="file" name="rapport">
+    </div>
+    <button type="submit" class="btn btn-primary">Soumettre</button>
+  </form>
+{% endblock %}

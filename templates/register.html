@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <h1>Demande de téléradiologie</h1>
+  {% from "includes/_formhelpers.html" import render_field %}
+  <form method="POST" action="/demande" enctype="multipart/form-data">
+    <input type="file"  name="mon_fichier" required><br>
+    <div class="form-group">
+      {{render_field(form.codeCC, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.modalite, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.examef, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.numeroO, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.obsvCl, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.quesCl, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.obsvTech, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.image, class_="form-control")}}
+    </div>
+    <div class="form-group">
+      {{render_field(form.medecin, class_="form-control")}}
+    </div>
+    <p><input type="submit" class="btn btn-primary" value="Envoyer"></p>
+  </form>
+{% endblock %}

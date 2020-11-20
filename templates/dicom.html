@@ -1,0 +1,21 @@
+<html>
+    <head>
+       <meta charset="utf-8">
+        <!-- importer le fichier de style -->
+        <!--link rel="stylesheet" href="{{url_for('static', filename='css/app.css')}}" media="screen" type="text/css" -->
+    </head>
+    <body>
+        <h2>Les rapports disponibles </h2>
+        <title>Path: {{ tree.name }}</title>
+        <h1>{{ tree.name }}</h1>
+        <ul>
+        {%for item in tree.children recursive %}
+            <li>{{ item.name }}
+            {% if item.children %}
+                <ul>static://{{ loop(item.children) }}</ul>
+            {% endif %}</li>
+            <a href="{{ url_for('download')}}">download</a>
+        {% endfor %}
+        </ul>
+    </body>
+</html>

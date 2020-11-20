@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+  <div class="jumbotron text-center">
+    <h1>Bienvenue !</h1>
+    <p class="lead">Cette application faite en Flask est une plateforme de téléradiologie.</p>
+    {% if session.logged_in == NULL %}
+      <a href="/demande" class="btn btn-primary btn-lg">Effectuer une demande</a>
+      <a href="/radiologue" class="btn btn-success btn-lg">Soumettre un rapport</a>
+    {% endif %}
+  </div>
+{% endblock %}
