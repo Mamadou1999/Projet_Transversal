@@ -278,7 +278,7 @@ def demande():
             return render_template('dicom.html', data_elements = data_elements, dataset = dataset, elements = elements, tree=make_tree(path))
         elif nom_fichier[-4:] != '.dcm' and nom_fichier[-4:] != '.DCM':
             return 'Choisir un fichier dicom'
-    return render_template('register.html', form=form)
+    return render_template('consultant.html', form=form)
 
 
 
